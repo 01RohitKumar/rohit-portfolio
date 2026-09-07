@@ -1,4 +1,3 @@
-```css
 /* ================= GENERAL ================= */
 
 * {
@@ -77,8 +76,13 @@ header {
 
 .menu-btn {
     display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
     font-size: 24px;
     cursor: pointer;
+    z-index: 1100;
 }
 
 
@@ -121,6 +125,24 @@ header {
     font-size: 27px;
     color: #d7dbe4;
     margin-bottom: 20px;
+    min-height: 34px;
+}
+
+.typed-text {
+    color: #00d4ff;
+    border-right: none;
+}
+
+.typed-cursor {
+    color: #00d4ff;
+    font-weight: 300;
+    margin-left: 2px;
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .home-text {
@@ -373,9 +395,9 @@ header {
 
 .certificate-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-    max-width: 850px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    max-width: 950px;
     margin: auto;
 }
 
@@ -383,33 +405,54 @@ header {
     background: #111725;
     border: 1px solid #20293b;
     border-radius: 10px;
-    padding: 30px;
+    padding: 20px 16px;
     text-align: center;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.certificate-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    border-color: #00d4ff;
+    background: #131a2b;
+    box-shadow: 0 12px 28px rgba(0, 212, 255, 0.18);
 }
 
 .certificate-card > i {
-    font-size: 38px;
+    font-size: 26px;
     color: #00d4ff;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    display: inline-block;
+    transition: transform 0.35s ease;
+}
+
+.certificate-card:hover > i {
+    transform: scale(1.15) rotate(-6deg);
 }
 
 .certificate-card h3 {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    font-size: 15px;
 }
 
 .certificate-card p {
     color: #9da5b5;
-    font-size: 14px;
-    margin-bottom: 20px;
+    font-size: 12px;
+    margin-bottom: 12px;
 }
 
 .certificate-btn {
     display: inline-block;
     border: 1px solid #00d4ff;
     color: #00d4ff;
-    padding: 8px 17px;
+    padding: 6px 14px;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.certificate-card:hover .certificate-btn {
+    background: #00d4ff;
+    color: #061018;
 }
 
 
@@ -560,6 +603,10 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .certificate-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .contact-container {
         grid-template-columns: 1fr;
     }
@@ -570,20 +617,23 @@ footer {
 @media (max-width: 700px) {
 
     .menu-btn {
-        display: block;
+        display: flex;
     }
 
     .nav-links {
-        position: absolute;
+        position: fixed;
         top: 75px;
         left: -100%;
         width: 100%;
+        height: calc(100vh - 75px);
+        overflow-y: auto;
         background: #0b0f19;
         flex-direction: column;
         text-align: center;
         gap: 0;
         border-bottom: 1px solid #202636;
-        transition: 0.3s;
+        transition: left 0.35s ease;
+        z-index: 1050;
     }
 
     .nav-links.active {
@@ -607,10 +657,60 @@ footer {
         align-items: center;
     }
 
-    .skills-container,
-    .projects-container,
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
     .certificate-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .projects-container {
         grid-template-columns: 1fr;
+    }
+
+    .skill-card {
+        padding: 16px 10px;
+    }
+
+    .skill-card i {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .skill-card h3 {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .skill-card p {
+        font-size: 11px;
+    }
+
+    .certificate-card {
+        padding: 14px 10px;
+    }
+
+    .certificate-card > i {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+
+    .certificate-card h3 {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    .certificate-card p {
+        font-size: 10px;
+        margin-bottom: 8px;
+    }
+
+    .certificate-btn {
+        padding: 5px 10px;
+        font-size: 10px;
     }
 
     .section {
@@ -642,4 +742,3 @@ footer {
         height: 220px;
     }
 }
-```
