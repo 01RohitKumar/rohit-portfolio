@@ -1,4 +1,3 @@
-```javascript
 // ================= MOBILE MENU =================
 
 const menuBtn = document.getElementById("menuBtn");
@@ -35,6 +34,54 @@ document.querySelectorAll(".nav-links a").forEach(link => {
     });
 
 });
+
+
+// ================= TYPEWRITER (HOME TITLE) =================
+
+const typedTextEl = document.getElementById("typedText");
+
+if (typedTextEl) {
+
+    const fullText = typedTextEl.textContent.trim();
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const typingSpeed = 90;
+    const deletingSpeed = 45;
+    const pauseAfterType = 1800;
+    const pauseAfterDelete = 500;
+
+    function typeLoop() {
+
+        if (!isDeleting) {
+            charIndex++;
+            typedTextEl.textContent = fullText.substring(0, charIndex);
+
+            if (charIndex === fullText.length) {
+                isDeleting = true;
+                setTimeout(typeLoop, pauseAfterType);
+                return;
+            }
+
+            setTimeout(typeLoop, typingSpeed);
+
+        } else {
+            charIndex--;
+            typedTextEl.textContent = fullText.substring(0, charIndex);
+
+            if (charIndex === 0) {
+                isDeleting = false;
+                setTimeout(typeLoop, pauseAfterDelete);
+                return;
+            }
+
+            setTimeout(typeLoop, deletingSpeed);
+        }
+    }
+
+    typedTextEl.textContent = "";
+    setTimeout(typeLoop, 400);
+}
 
 
 // ================= SCROLL TO TOP =================
@@ -74,4 +121,3 @@ contactForm.addEventListener("submit", (event) => {
     contactForm.reset();
 
 });
-```
